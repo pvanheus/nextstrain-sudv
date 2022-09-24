@@ -6,7 +6,6 @@ input_fasta = "data/sudv_strains.fasta",
 input_metadata = "data/sudv_metadata.tsv",
 dropped_strains = "config/dropped_strains.txt",
 reference = "config/sudv_outgroup.gb",
-colors = "config/colors.tsv",
 lat_longs = "config/lat_longs.tsv",
 auspice_config = "config/auspice_config.json"
 
@@ -189,7 +188,6 @@ rule export:
         traits = rules.traits.output.node_data,
         nt_muts = rules.ancestral.output.node_data,
         aa_muts = rules.translate.output.node_data,
-        colors = colors,
         lat_longs = lat_longs,
         auspice_config = auspice_config
     output:
@@ -200,7 +198,6 @@ rule export:
             --tree {input.tree} \
             --metadata {input.metadata} \
             --node-data {input.branch_lengths} {input.traits} {input.nt_muts} {input.aa_muts} \
-            --colors {input.colors} \
             --lat-longs {input.lat_longs} \
             --auspice-config {input.auspice_config} \
             --output {output.auspice_json}
