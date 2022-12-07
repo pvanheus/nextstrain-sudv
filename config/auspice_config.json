@@ -21,6 +21,11 @@
       "type": "categorical"
     },
     {
+      "key": "division",
+      "title": "Administrative Division",
+      "type": "categorical"
+    },
+    {
       "key": "country",
       "title": "Country",
       "type": "categorical"
@@ -33,7 +38,8 @@
   ],
   "geo_resolutions": [
     "country",
-    "region"
+    "region",
+    "division"
   ],
   "panels": [
      "tree",

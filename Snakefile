@@ -8,6 +8,7 @@ dropped_strains = "config/dropped_strains.txt",
 reference = "config/sudv_outgroup.gb",
 lat_longs = "config/lat_longs.tsv",
 auspice_config = "config/auspice_config.json"
+description = "config/description.md"
 
 rule index_sequences:
     message:
@@ -189,7 +190,8 @@ rule export:
         nt_muts = rules.ancestral.output.node_data,
         aa_muts = rules.translate.output.node_data,
         lat_longs = lat_longs,
-        auspice_config = auspice_config
+        auspice_config = auspice_config,
+        description = description
     output:
         auspice_json = rules.all.input.auspice_json,
     shell:
@@ -200,6 +202,7 @@ rule export:
             --node-data {input.branch_lengths} {input.traits} {input.nt_muts} {input.aa_muts} \
             --lat-longs {input.lat_longs} \
             --auspice-config {input.auspice_config} \
+            --description {input.description} \
             --output {output.auspice_json}
         """
 
